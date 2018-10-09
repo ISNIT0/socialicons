@@ -124,10 +124,7 @@ var affect = nimble_1.makeRenderLoop(target, {
                 makeSelectRow(state, affect),
                 makePageBody(state, affect)
             ]),
-            nimble_1.h('div.share', [
-            // h('a', 'TW'),
-            // h('a', 'GH')
-            ])
+            makeSocialFooter()
         ]),
     ]);
 });
@@ -147,6 +144,27 @@ function makePageBody(state, affect) {
         nimble_1.h('div.icon-cont', iconGroup.icons.map(renderIcon)),
         nimble_1.h('div.body-footer', [
             nimble_1.h('a', { href: iconGroup.brandGuideline, target: '_blank' }, 'View Brand Guidelines')
+        ])
+    ]);
+}
+function makeSocialFooter() {
+    return nimble_1.h('div.share', {}, [
+        nimble_1.h('div', [
+            nimble_1.h('a.button.no-style', {
+                href: 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialicons.co%2F&text=The%20go-to%20place%20for%20social%20vector%20and%20png%20icons%20via%20%40JReeve0',
+            }, [
+                nimble_1.h('object.icon', {
+                    type: 'image/svg+xml',
+                    data: '/res/twitter/logo-black.svg',
+                })
+            ]),
+            nimble_1.h('a.button.no-style', {
+                href: 'https://github.com/ISNIT0/socialicons',
+            }, [
+                nimble_1.h('img.icon', {
+                    src: '/res/github/mark-black.png',
+                })
+            ])
         ])
     ]);
 }
@@ -187,7 +205,7 @@ function renderIcon(icon) {
             ]),
             nimble_1.h('button.no-style', {
                 onclick: function () {
-                    prompt('Image URL', "https://socialicons.io" + filePath);
+                    prompt('Image URL', "https://socialicons.co" + filePath);
                 }
             }, [
                 nimble_1.h('img', { src: 'res/link.svg' })

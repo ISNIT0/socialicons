@@ -145,10 +145,7 @@ const affect = makeRenderLoop<State>(
                     makeSelectRow(state, affect),
                     makePageBody(state, affect)
                 ]),
-                h('div.share', [
-                    // h('a', 'TW'),
-                    // h('a', 'GH')
-                ])
+                makeSocialFooter()
             ]),
         ])
     }
@@ -176,6 +173,29 @@ function makePageBody(state: State, affect: Affect) {
         ])
     ]);
 }
+
+function makeSocialFooter() {
+    return h('div.share', {}, [
+        h('div', [
+            h('a.button.no-style', {
+                href: 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialicons.co%2F&text=The%20go-to%20place%20for%20social%20vector%20and%20png%20icons%20via%20%40JReeve0',
+            }, [
+                    h('object.icon', {
+                        type: 'image/svg+xml',
+                        data: '/res/twitter/logo-black.svg',
+                    })
+                ]),
+            h('a.button.no-style', {
+                href: 'https://github.com/ISNIT0/socialicons',
+            }, [
+                    h('img.icon', {
+                        src: '/res/github/mark-black.png',
+                    })
+                ])
+        ])
+    ]);
+}
+
 
 function renderIcon(icon: SocialIcon) {
     const filePath = icon.path.replace('.ext', '.svg');
@@ -218,7 +238,7 @@ function renderIcon(icon: SocialIcon) {
                 ]),
             h('button.no-style', {
                 onclick() {
-                    prompt('Image URL', `https://socialicons.io${filePath}`);
+                    prompt('Image URL', `https://socialicons.co${filePath}`);
                 }
             }, [
                     h('img', { src: 'res/link.svg' })
